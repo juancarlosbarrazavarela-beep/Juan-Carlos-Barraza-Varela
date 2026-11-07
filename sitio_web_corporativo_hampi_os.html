@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="es-CL" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Meta etiquetas SEO Básico -->
+    <title>HAMPI OS | Tecnología de Evaluación Inicial de Salud para Minería e Industria</title>
+    <meta name="description" content="Plataforma tecnológica chilena para la evaluación inicial de riesgos sanitarios en faenas mineras, industrias y operaciones remotas. La salud no debería depender de la distancia.">
+    <meta name="keywords" content="HAMPI OS, Salud Digital, Minería Chile, Salud Ocupacional, Evaluación Inicial de Salud, Prevención de Riesgos, Telemedicina Minera">
+    <meta name="author" content="HAMPI OS">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Meta etiquetas Sociales -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="HAMPI OS - Tecnología que conecta la salud con la vida">
+    <meta property="og:description" content="Evaluación inicial de salud estructurada mediante inteligencia artificial y dispositivos integrados para entornos remotos e industriales.">
+    <meta property="og:locale" content="es_CL">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#102B46',     /* Azul profundo principal */
+                            teal: '#12A8A4',     /* Turquesa tecnológico */
+                            tealHover: '#0e8b88',
+                            dark: '#303B46',     /* Gris grafito */
+                            light: '#F3F6F8',    /* Gris claro de fondo */
+                            surface: '#FFFFFF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Iconos Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Respeto a usuarios con preferencia de movimiento reducido */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto !important;
+            }
+            .animate-pulse, .transition-all {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(18, 168, 164, 0.12) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="font-sans bg-brand-light text-brand-dark antialiased selection:bg-brand-teal selection:text-white flex flex-col min-h-screen">
+
+    <!-- CONFIGURACIÓN DE INTEGRACIONES (RESERVADOS DE CÓDIGO) -->
+    <script>
+        // CONFIGURACIÓN DE NEGOCIO Y ENDPOINTS
+        const CONFIG_HAMPI = {
+            // Reemplazar con el número real de WhatsApp en formato internacional sin signos (ej: '56912345678')
+            whatsappNumber: '', 
+            // Mensaje predeterminado para WhatsApp
+            whatsappMessage: encodeURIComponent("Hola, me interesa conocer HAMPI OS y evaluar cómo podría implementarse en nuestra organización. Quisiera solicitar una demostración y recibir información comercial."),
+            // Webhook o endpoint para recepción del formulario (ej: Formspree, Make, Hubspot o backend propio)
+            formEndpoint: null // Ej: 'https://formspree.io/f/xyz...'
+        };
+    </script>
+
+    <!-- BANNER DE AVISO TECNOLÓGICO Y ÉTICO -->
+    <aside aria-label="Aviso legal y transparencia sanitaria" class="bg-brand-navy text-gray-300 text-xs py-2 px-4 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-center sm:text-left">
+            <div class="flex items-center gap-2">
+                <i data-lucide="info" class="w-4 h-4 text-brand-teal shrink-0" aria-hidden="true"></i>
+                <span><strong>Aviso de transparencia:</strong> HAMPI OS es una plataforma en etapa de desarrollo para apoyo a la evaluación inicial. No reemplaza el diagnóstico ni el criterio de profesionales de salud.</span>
+            </div>
+            <span class="inline-flex items-center gap-1 font-semibold text-brand-teal shrink-0">
+                <i data-lucide="flag" class="w-3.5 h-3.5" aria-hidden="true"></i> Iniciativa Tecnológica Chilena
+            </span>
+        </div>
+    </aside>
+
+    <!-- ENCABEZADO Y NAVEGACIÓN -->
+    <header class="sticky top-0 z-50 bg-brand-navy/95 backdrop-blur-md border-b border-slate-800 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- BRANDING / LOGOTIPO -->
+                <a href="#inicio" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-brand-teal rounded-lg p-1" aria-label="HAMPI OS - Ir al inicio">
+                    <!-- Espacio reservado para SVG o imagen de logotipo oficial -->
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-teal to-teal-700 flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-brand-teal/20">
+                        H
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-black tracking-tight text-white group-hover:text-brand-teal transition-colors">HAMPI <span class="text-brand-teal">OS</span></span>
+                        <span class="text-[10px] tracking-widest text-slate-400 uppercase font-medium">Health Tech Solution</span>
+                    </div>
+                </a>
+
+                <!-- NAVEGACIÓN DESKTOP -->
+                <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-300" aria-label="Navegación principal">
+                    <a href="#inicio" class="hover:text-brand-teal transition-colors py-2">Inicio</a>
+                    <a href="#solucion" class="hover:text-brand-teal transition-colors py-2">La Solución</a>
+                    <a href="#como-funciona" class="hover:text-brand-teal transition-colors py-2">Cómo Funciona</a>
+                    <a href="#beneficios" class="hover:text-brand-teal transition-colors py-2">Beneficios</a>
+                    <a href="#aplicaciones" class="hover:text-brand-teal transition-colors py-2">Aplicaciones</a>
+                    <a href="#nosotros" class="hover:text-brand-teal transition-colors py-2">Nosotros</a>
+                    <a href="#desarrollo" class="hover:text-brand-teal transition-colors py-2">Desarrollo</a>
+                </nav>
+
+                <!-- BOTÓN ACCIÓN ENCABEZADO -->
+                <div class="hidden sm:flex items-center gap-4">
+                    <a href="#demostracion" class="inline-flex items-center gap-2 bg-brand-teal hover:bg-brand-tealHover text-white text-sm font-semibold px-5 py-2.5 rounded-xl shadow-md hover:shadow-lg hover:shadow-brand-teal/20 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-teal">
+                        <i data-lucide="calendar" class="w-4 h-4" aria-hidden="true"></i>
+                        <span>Agenda una demostración</span>
+                    </a>
+                </div>
+
+                <!-- BOTÓN MENÚ MÓVIL -->
+                <button id="mobile-menu-btn" type="button" class="lg:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-teal" aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menú principal">
+                    <i data-lucide="menu" id="menu-icon-open" class="w-6 h-6"></i>
+                    <i data-lucide="x" id="menu-icon-close" class="w-6 h-6 hidden"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- MENÚ DESPLEGABLE MÓVIL -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-brand-navy border-b border-slate-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#inicio" class="mobile-nav-link block px-3 py-2.5 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-brand-teal">Inicio</a>
+            <a href="#solucion" class="mobile-nav-link block px-3 py-2.5 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-brand-teal">La Solución</a>
+            <a href="#como-funciona" class="mobile-nav-link block px-3 py-2.5 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-brand-teal">Cómo Funciona</a>
+            <a href="#beneficios" class="mobile-nav-link block px-3 py-2.5 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-brand-teal">Beneficios</a>
+            <a href="#aplicaciones" class="mobile-nav-link block px-3 py-2.5 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-brand-teal">Aplicaciones</a>
+            <a href="#nosotros" class="mobile-nav-link block px-3 py-2.5 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-brand-teal">Nosotros</a>
+            <a href="#desarrollo" class="mobile-nav-link block px-3 py-2.5 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-brand-teal">Desarrollo y Validación</a>
+            <div class="pt-2">
+                <a href="#demostracion" class="mobile-nav-link flex items-center justify-center gap-2 bg-brand-teal hover:bg-brand-tealHover text-white font-semibold py-3 px-4 rounded-xl shadow text-center w-full">
+                    <i data-lucide="calendar" class="w-5 h-5" aria-hidden="true"></i>
+                    <span>Agenda una demostración</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- SECCIÓN 1: HERO -->
+        <section id="inicio" class="relative bg-brand-navy text-white overflow-hidden py-16 lg:py-24 bg-grid-pattern">
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-navy via-brand-navy/95 to-brand-navy/80 pointer-events-none"></div>
+            
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- TEXTO HERO -->
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-teal/15 border border-brand-teal/30 text-brand-teal text-xs font-semibold uppercase tracking-wider">
+                            <i data-lucide="shield-check" class="w-4 h-4" aria-hidden="true"></i>
+                            <span>Innovación en Salud Digital e Industrial</span>
+                        </div>
+
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                            «La salud no debería depender de la <span class="text-brand-teal">distancia</span>».
+                        </h1>
+
+                        <p class="text-lg sm:text-xl text-slate-300 max-w-2xl font-normal leading-relaxed mx-auto lg:mx-0">
+                            Tecnología de evaluación inicial de salud para minería, industrias y operaciones remotas. Innovación diseñada para conectar personas, información y atención sanitaria.
+                        </p>
+
+                        <!-- ACCIONES PRINCIPAL Y SECUNDARIA -->
+                        <div class="pt-4 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <a href="#demostracion" class="inline-flex items-center justify-center gap-2 bg-brand-teal hover:bg-brand-tealHover text-white font-bold text-base px-7 py-4 rounded-xl shadow-lg hover:shadow-brand-teal/30 transition-all transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-teal">
+                                <span>Agenda una demostración</span>
+                                <i data-lucide="arrow-right" class="w-5 h-5" aria-hidden="true"></i>
+                            </a>
+                            <a href="#solucion" class="inline-flex items-center justify-center gap-2 bg-slate-800/80 hover:bg-slate-800 text-slate-200 border border-slate-700 font-semibold text-base px-7 py-4 rounded-xl hover:border-slate-500 transition-all focus:outline-none focus:ring-2 focus:ring-slate-400">
+                                <span>Conoce la solución</span>
+                                <i data-lucide="chevron-down" class="w-5 h-5" aria-hidden="true"></i>
+                            </a>
+                        </div>
+
+                        <!-- DESTACADOS DE CONFIANZA -->
+                        <div class="pt-8 border-t border-slate-800 grid grid-cols-3 gap-4 text-center lg:text-left">
+                            <div>
+                                <p class="text-2xl font-bold text-white">36+ Años</p>
+                                <p class="text-xs text-slate-400 mt-0.5">Experiencia operacional en gran minería</p>
+                            </div>
+                            <div>
+                                <p class="text-2xl font-bold text-white">Entornos</p>
+                                <p class="text-xs text-slate-400 mt-0.5">Diseñado para faenas remotas y aisladas</p>
+                            </div>
+                            <div>
+                                <p class="text-2xl font-bold text-white">IA + IoT</p>
+                                <p class="text-xs text-slate-400 mt-0.5">Apoyo digital a la evaluación inicial</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- COMPOSICIÓN VISUAL TECNOLÓGICA / ESPACIO RECONOCIBLE DE PROTOTIPO -->
+                    <div class="lg:col-span-5 relative">
+                        <div class="relative mx-auto max-w-md lg:max-w-none rounded-2xl bg-gradient-to-b from-slate-800 to-brand-navy p-3 border border-slate-700 shadow-2xl">
+                            
+                            <!-- ESPACIO RESERVADO FOTOGRAFÍA OFICIAL PROTOTIPO -->
+                            <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-slate-900 flex flex-col items-center justify-center text-center p-6 border border-slate-800 group">
+                                <!-- Imagen de fondo decorativa de faena remota / ambiente industrial -->
+                                <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80" 
+                                     alt="Operación industrial remota en minería" 
+                                     class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-luminosity"
+                                     onerror="this.style.display='none'">
+                                
+                                <div class="relative z-10 flex flex-col items-center">
+                                    <div class="w-16 h-16 rounded-2xl bg-brand-teal/20 border border-brand-teal/40 flex items-center justify-center text-brand-teal mb-4 shadow-inner">
+                                        <i data-lucide="cpu" class="w-8 h-8"></i>
+                                    </div>
+                                    <span class="inline-block px-3 py-1 bg-brand-teal/30 text-brand-teal text-xs font-semibold rounded-full mb-2">Espacio reservado oficial</span>
+                                    <p class="text-sm font-semibold text-white">Prototipo Tecnológico HAMPI OS</p>
+                                    <p class="text-xs text-slate-400 mt-1 max-w-xs">Fotografías reales del equipamiento tótem y módulos portátiles de medición sanitaria.</p>
+                                </div>
+                            </div>
+
+                            <!-- CARD SUPERPUESTA DE DEMOSTRACIÓN DE ESTADO -->
+                            <div class="mt-3 p-4 rounded-xl bg-slate-900/90 border border-slate-700 flex items-center justify-between text-xs">
+                                <div class="flex items-center gap-3">
+                                    <span class="relative flex h-3 w-3">
+                                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                      <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                                    </span>
+                                    <div>
+                                        <p class="font-medium text-slate-200">Sistema en fase de validación</p>
+                                        <p class="text-slate-400 text-[11px]">Integración de sensores de signos vitales</p>
+                                    </div>
+                                </div>
+                                <span class="text-brand-teal font-mono font-semibold">v1.0 Prototipo</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: EL PROBLEMA -->
+        <section id="problema" class="py-16 sm:py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-brand-teal font-bold text-xs uppercase tracking-widest">Contexto Operacional</span>
+                    <h2 class="text-3xl font-extrabold text-brand-navy mt-2 sm:text-4xl">Desafíos sanitarios en zonas aisladas e industriales</h2>
+                    <p class="text-slate-600 mt-4 text-base sm:text-lg">
+                        En faenas mineras y plataformas industriales alejadas de centros urbanos, los primeros minutos ante un evento de salud resultan determinantes.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Desafío 1 -->
+                    <div class="bg-brand-light p-8 rounded-2xl border border-slate-200 hover:border-brand-teal/40 transition-all hover:shadow-lg">
+                        <div class="w-12 h-12 rounded-xl bg-red-100 text-red-600 flex items-center justify-center mb-6">
+                            <i data-lucide="map-pin-off" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-navy mb-3">Distancias Geográficas Importantes</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Las faenas se ubican a horas de centros hospitalarios de alta complejidad, lo que exige contar con evaluaciones iniciales rigurosas antes de decidir traslados.
+                        </p>
+                    </div>
+
+                    <!-- Desafío 2 -->
+                    <div class="bg-brand-light p-8 rounded-2xl border border-slate-200 hover:border-brand-teal/40 transition-all hover:shadow-lg">
+                        <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center mb-6">
+                            <i data-lucide="clock-alert" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-navy mb-3">Acceso Oportuno Limitado</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            La presencia continua de médicos especialistas en terreno no siempre es factible en cada punto remoto o turno operativo.
+                        </p>
+                    </div>
+
+                    <!-- Desafío 3 -->
+                    <div class="bg-brand-light p-8 rounded-2xl border border-slate-200 hover:border-brand-teal/40 transition-all hover:shadow-lg">
+                        <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center mb-6">
+                            <i data-lucide="file-question" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-navy mb-3">Información No Estructurada</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Dificultad para registrar y consolidar datos de signos vitales e historial previo de forma homogénea en el primer punto de contacto.
+                        </p>
+                    </div>
+
+                    <!-- Desafío 4 -->
+                    <div class="bg-brand-light p-8 rounded-2xl border border-slate-200 hover:border-brand-teal/40 transition-all hover:shadow-lg">
+                        <div class="w-12 h-12 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center mb-6">
+                            <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-navy mb-3">Incertidumbre en Alertas</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Complejidad para identificar tempranamente descompensaciones o señales de riesgo sin herramientas de triaje estandarizadas.
+                        </p>
+                    </div>
+
+                    <!-- Desafío 5 -->
+                    <div class="bg-brand-light p-8 rounded-2xl border border-slate-200 hover:border-brand-teal/40 transition-all hover:shadow-lg md:col-span-2 lg:col-span-2">
+                        <div class="w-12 h-12 rounded-xl bg-teal-100 text-brand-teal flex items-center justify-center mb-6">
+                            <i data-lucide="network" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-navy mb-3">Coordinación de Derivación Compleja</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Brecha en la comunicación fluida de parámetros sanitarios entre el personal de primera respuesta en terreno y los centros asistenciales de referencia.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: NUESTRA SOLUCIÓN -->
+        <section id="solucion" class="py-16 sm:py-24 bg-brand-light border-y border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-brand-teal font-bold text-xs uppercase tracking-widest">Plataforma Tecnológica</span>
+                    <h2 class="text-3xl font-extrabold text-brand-navy mt-2 sm:text-4xl">Nuestra Solución: HAMPI OS</h2>
+                    <p class="text-slate-600 mt-4 text-base sm:text-lg">
+                        Una arquitectura tecnológica orientada a estructurar la evaluación inicial de salud, combinando hardware adaptable, sensores y soporte digital.
+                    </p>
+                </div>
+
+                <!-- 5 COMPONENTES CLAVE -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Componente 1 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-xs font-bold text-brand-teal bg-teal-50 px-3 py-1 rounded-full">Componente 01</span>
+                                <i data-lucide="monitor" class="w-6 h-6 text-brand-navy"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-brand-navy mb-2">Equipamiento Tótem y Portátil</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Estaciones fijas tipo tótem para policlínicos o garitas de control, junto a módulos portátiles de alta resistencia para traslados a terreno.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-500">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i> Prototipo físico disponible
+                        </div>
+                    </div>
+
+                    <!-- Componente 2 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-xs font-bold text-brand-teal bg-teal-50 px-3 py-1 rounded-full">Componente 02</span>
+                                <i data-lucide="activity" class="w-6 h-6 text-brand-navy"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-brand-navy mb-2">Medición de Signos Vitales</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Integración con dispositivos compatibles para captura de presión arterial, oximetría, pulso y otros parámetros biométricos fundamentales.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-500">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i> Integración IoT proyectada
+                        </div>
+                    </div>
+
+                    <!-- Componente 3 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-xs font-bold text-brand-teal bg-teal-50 px-3 py-1 rounded-full">Componente 03</span>
+                                <i data-lucide="brain-circuit" class="w-6 h-6 text-brand-navy"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-brand-navy mb-2">Anamnesis Guiada con IA</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Cuestionarios interactivos estructurados respaldados por inteligencia artificial para guiar la recolección de síntomas y antecedentes.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-500">
+                            <i data-lucide="sparkles" class="w-4 h-4 text-amber-500"></i> Algoritmos en desarrollo
+                        </div>
+                    </div>
+
+                    <!-- Componente 4 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-xs font-bold text-brand-teal bg-teal-50 px-3 py-1 rounded-full">Componente 04</span>
+                                <i data-lucide="shield-alert" class="w-6 h-6 text-brand-navy"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-brand-navy mb-2">Semáforo de Riesgo Orientativo</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Visualización preliminar mediante código de colores para categorizar objetivamente los niveles de urgencia y orientación sanitaria.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-500">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i> Clasificación visual operativa
+                        </div>
+                    </div>
+
+                    <!-- Componente 5 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between md:col-span-2 lg:col-span-2">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-xs font-bold text-brand-teal bg-teal-50 px-3 py-1 rounded-full">Componente 05</span>
+                                <i data-lucide="wifi" class="w-6 h-6 text-brand-navy"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-brand-navy mb-2">Conectividad y Derivación Sanitaria</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Plataforma de comunicación de datos segura para transmitir el informe estructurado hacia médicos de turno o centros de telemedicina.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-500">
+                            <i data-lucide="clock" class="w-4 h-4 text-brand-teal"></i> En fase de validación de interoperabilidad
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: CÓMO FUNCIONA HAMPI OS -->
+        <section id="como-funciona" class="py-16 sm:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-brand-teal font-bold text-xs uppercase tracking-widest">Flujo Operativo</span>
+                    <h2 class="text-3xl font-extrabold text-brand-navy mt-2 sm:text-4xl">Cómo funciona la evaluación en 5 etapas</h2>
+                    <p class="text-slate-600 mt-4 text-base sm:text-lg">
+                        Un proceso claro, intuitivo y estandarizado para la primera atención en operaciones aisladas.
+                    </p>
+                </div>
+
+                <!-- LÍNEA DE TIEMPO / 5 ETAPAS -->
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-4 relative">
+                    
+                    <!-- Etapa 1 -->
+                    <div class="relative bg-brand-light p-6 rounded-2xl border border-slate-200 text-center flex flex-col items-center">
+                        <div class="w-10 h-10 rounded-full bg-brand-navy text-white font-bold text-sm flex items-center justify-center mb-4 ring-4 ring-slate-100">1</div>
+                        <h3 class="font-bold text-brand-navy text-base mb-2">Interacción Inicial</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            La persona accede a la interfaz del tótem o módulo portátil e inicia la atención.
+                        </p>
+                    </div>
+
+                    <!-- Etapa 2 -->
+                    <div class="relative bg-brand-light p-6 rounded-2xl border border-slate-200 text-center flex flex-col items-center">
+                        <div class="w-10 h-10 rounded-full bg-brand-navy text-white font-bold text-sm flex items-center justify-center mb-4 ring-4 ring-slate-100">2</div>
+                        <h3 class="font-bold text-brand-navy text-base mb-2">Recopilación de Datos</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Se registran antecedentes de salud y se capturan signos vitales con dispositivos guiados.
+                        </p>
+                    </div>
+
+                    <!-- Etapa 3 -->
+                    <div class="relative bg-brand-light p-6 rounded-2xl border border-slate-200 text-center flex flex-col items-center">
+                        <div class="w-10 h-10 rounded-full bg-brand-navy text-white font-bold text-sm flex items-center justify-center mb-4 ring-4 ring-slate-100">3</div>
+                        <h3 class="font-bold text-brand-navy text-base mb-2">Apoyo Digital IA</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            El sistema procesa y organiza la información para sistematizar la consulta.
+                        </p>
+                    </div>
+
+                    <!-- Etapa 4 -->
+                    <div class="relative bg-brand-light p-6 rounded-2xl border border-slate-200 text-center flex flex-col items-center">
+                        <div class="w-10 h-10 rounded-full bg-brand-navy text-white font-bold text-sm flex items-center justify-center mb-4 ring-4 ring-slate-100">4</div>
+                        <h3 class="font-bold text-brand-navy text-base mb-2">Clasificación Semáforo</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Muestra niveles orientativos de riesgo (Verde / Amarillo / Rojo) para rápida lectura.
+                        </p>
+                    </div>
+
+                    <!-- Etapa 5 -->
+                    <div class="relative bg-brand-light p-6 rounded-2xl border border-slate-200 text-center flex flex-col items-center">
+                        <div class="w-10 h-10 rounded-full bg-brand-navy text-white font-bold text-sm flex items-center justify-center mb-4 ring-4 ring-slate-100">5</div>
+                        <h3 class="font-bold text-brand-navy text-base mb-2">Derivación Sanitaria</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Facilita la coordinación con profesionales de la salud según el protocolo activo.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- DETALLE DEL SISTEMA DE SEMÁFORO DE RIESGO -->
+                <div class="mt-16 bg-brand-navy text-white p-8 rounded-3xl shadow-xl">
+                    <div class="max-w-3xl mx-auto text-center mb-8">
+                        <span class="text-brand-teal text-xs font-bold uppercase tracking-widest">Visualización Estructurada</span>
+                        <h3 class="text-2xl font-bold mt-1">Sistema Orientativo de Clasificación de Riesgo</h3>
+                        <p class="text-slate-300 text-sm mt-2">
+                            El semáforo utiliza un estándar visual claro para categorizar la urgencia. No constituye un diagnóstico médico explícito.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Verde -->
+                        <div class="bg-slate-800/80 p-5 rounded-2xl border-l-4 border-emerald-500">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="w-4 h-4 rounded-full bg-emerald-500 inline-block shadow-sm shadow-emerald-500"></span>
+                                <h4 class="font-bold text-emerald-400">Verde — Parámetros Estables</h4>
+                            </div>
+                            <p class="text-xs text-slate-300">Indica valores en rangos habituales para seguimiento continuo sin requerimiento de traslado inmediato.</p>
+                        </div>
+
+                        <!-- Amarillo -->
+                        <div class="bg-slate-800/80 p-5 rounded-2xl border-l-4 border-amber-500">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="w-4 h-4 rounded-full bg-amber-500 inline-block shadow-sm shadow-amber-500"></span>
+                                <h4 class="font-bold text-amber-400">Amarillo — Alerta Preventiva</h4>
+                            </div>
+                            <p class="text-xs text-slate-300">Variaciones en signos o síntomas que sugieren monitoreo cercano y evaluación por profesional de turno.</p>
+                        </div>
+
+                        <!-- Rojo -->
+                        <div class="bg-slate-800/80 p-5 rounded-2xl border-l-4 border-red-500">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="w-4 h-4 rounded-full bg-red-500 inline-block shadow-sm shadow-red-500"></span>
+                                <h4 class="font-bold text-red-400">Rojo — Atención Prioritaria</h4>
+                            </div>
+                            <p class="text-xs text-slate-300">Parámetros alterados o síntomas de alerta que activan de inmediato el protocolo de coordinación médica urgente.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: BENEFICIOS -->
+        <section id="beneficios" class="py-16 sm:py-24 bg-brand-light border-y border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-brand-teal font-bold text-xs uppercase tracking-widest">Valor para la Organización</span>
+                    <h2 class="text-3xl font-extrabold text-brand-navy mt-2 sm:text-4xl">Beneficios Potenciales</h2>
+                    <p class="text-slate-600 mt-4 text-base sm:text-lg">
+                        Diseñado para robustecer la gestión preventiva y la capacidad de respuesta sanitaria en faena.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Bloque 1 -->
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-14 h-14 rounded-2xl bg-teal-50 text-brand-teal flex items-center justify-center mb-6">
+                            <i data-lucide="clipboard-check" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-navy mb-3">Evaluación Inicial Estructurada</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Facilita la recopilación ordenada y homogénea de signos vitales y antecedentes sanitarios relevantes desde el primer instante en que se manifiesta una molestia o síntoma.
+                        </p>
+                    </div>
+
+                    <!-- Bloque 2 -->
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-14 h-14 rounded-2xl bg-teal-50 text-brand-teal flex items-center justify-center mb-6">
+                            <i data-lucide="shield-check" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-navy mb-3">Continuidad Operacional</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Busca fortalecer la preparación y la coordinación oportuna ante situaciones de salud en instalaciones distantes, reduciendo la incertidumbre operativa en faena.
+                        </p>
+                    </div>
+
+                    <!-- Bloque 3 -->
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-14 h-14 rounded-2xl bg-teal-50 text-brand-teal flex items-center justify-center mb-6">
+                            <i data-lucide="sliders" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-navy mb-3">Tecnología Adaptable</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Contempla configuraciones modulares y adaptables para faenas mineras, policlínicos de contratistas, instalaciones industriales y campamentos aislados.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN 6: SECTORES DE APLICACIÓN -->
+        <section id="aplicaciones" class="py-16 sm:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-brand-teal font-bold text-xs uppercase tracking-widest">Sectores Estratégicos</span>
+                    <h2 class="text-3xl font-extrabold text-brand-navy mt-2 sm:text-4xl">Campos de Aplicación</h2>
+                    <p class="text-slate-600 mt-4 text-base sm:text-lg">
+                        Solución proyectada para responder a las exigencias de diversos sectores productivos de alta complejidad.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Tarjeta 1 -->
+                    <div class="group relative rounded-2xl overflow-hidden border border-slate-200 bg-brand-light p-6 hover:border-brand-teal transition-all">
+                        <div class="w-10 h-10 rounded-xl bg-brand-navy text-white flex items-center justify-center mb-4 group-hover:bg-brand-teal transition-colors">
+                            <i data-lucide="mountain" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-brand-navy mb-2">Gran Minería</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Yacimientos a gran altitud geográfica y faenas aisladas que requieren estandarizar el triaje inicial en garitas, campamentos y frentes de trabajo.
+                        </p>
+                    </div>
+
+                    <!-- Tarjeta 2 -->
+                    <div class="group relative rounded-2xl overflow-hidden border border-slate-200 bg-brand-light p-6 hover:border-brand-teal transition-all">
+                        <div class="w-10 h-10 rounded-xl bg-brand-navy text-white flex items-center justify-center mb-4 group-hover:bg-brand-teal transition-colors">
+                            <i data-lucide="hard-hat" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-brand-navy mb-2">Empresas Contratistas (EECC)</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Empresas de servicios operacionales que buscan respaldar el cuidado de sus trabajadores en instalaciones de terceros con registros claros.
+                        </p>
+                    </div>
+
+                    <!-- Tarjeta 3 -->
+                    <div class="group relative rounded-2xl overflow-hidden border border-slate-200 bg-brand-light p-6 hover:border-brand-teal transition-all">
+                        <div class="w-10 h-10 rounded-xl bg-brand-navy text-white flex items-center justify-center mb-4 group-hover:bg-brand-teal transition-colors">
+                            <i data-lucide="factory" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-brand-navy mb-2">Instalaciones Industriales</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Plantas químicas, celulosas, centros logísticos e industrias de procesamiento continuo con turnos rotativos y áreas de extensión amplia.
+                        </p>
+                    </div>
+
+                    <!-- Tarjeta 4 -->
+                    <div class="group relative rounded-2xl overflow-hidden border border-slate-200 bg-brand-light p-6 hover:border-brand-teal transition-all">
+                        <div class="w-10 h-10 rounded-xl bg-brand-navy text-white flex items-center justify-center mb-4 group-hover:bg-brand-teal transition-colors">
+                            <i data-lucide="cross" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-brand-navy mb-2">Centros e Instituciones de Salud</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Mutuales, prestadores institucionales y unidades de salud ocupacional que gestionan atención remota o telemedicina en faena.
+                        </p>
+                    </div>
+
+                    <!-- Tarjeta 5 -->
+                    <div class="group relative rounded-2xl overflow-hidden border border-slate-200 bg-brand-light p-6 hover:border-brand-teal transition-all md:col-span-2 lg:col-span-2">
+                        <div class="w-10 h-10 rounded-xl bg-brand-navy text-white flex items-center justify-center mb-4 group-hover:bg-brand-teal transition-colors">
+                            <i data-lucide="compass" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-brand-navy mb-2">Operaciones en Territorios Aislados</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Proyectos de exploración, energía, infraestructura vial o científica en zonas geográficas con conectividad compleja y acceso diferido a atención médica.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN 7: NUESTRA HISTORIA Y FUNDADOR -->
+        <section id="nosotros" class="py-16 sm:py-24 bg-brand-navy text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- FOTO / ESPACIO FUNDADOR -->
+                    <div class="lg:col-span-5">
+                        <div class="relative rounded-3xl bg-slate-800 p-4 border border-slate-700 shadow-2xl">
+                            <!-- Retrato reservado para Juan Carlos Barraza Varela -->
+                            <div class="aspect-[4/5] rounded-2xl bg-slate-900 overflow-hidden flex flex-col items-center justify-center text-center p-6 border border-slate-700 relative">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" 
+                                     alt="Juan Carlos Barraza Varela - Fundador HAMPI OS" 
+                                     class="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-luminosity"
+                                     onerror="this.style.display='none'">
+                                
+                                <div class="relative z-10">
+                                    <div class="w-20 h-20 rounded-full bg-brand-teal/20 border-2 border-brand-teal flex items-center justify-center text-brand-teal mx-auto mb-4">
+                                        <i data-lucide="user-check" class="w-10 h-10"></i>
+                                    </div>
+                                    <span class="inline-block px-3 py-1 bg-brand-teal/30 text-brand-teal text-xs font-semibold rounded-full mb-2">Fundador & Liderazgo</span>
+                                    <h3 class="text-xl font-bold text-white">Juan Carlos Barraza Varela</h3>
+                                    <p class="text-xs text-slate-300 mt-1">36 años de trayectoria profesional en prevención de riesgos en la gran minería chilena.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TEXTO CORPORATIVO INSTITUCIONAL -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <span class="text-brand-teal font-bold text-xs uppercase tracking-widest">Nuestra Historia y Origen</span>
+                        
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+                            Experiencia real convertida en innovación preventiva
+                        </h2>
+
+                        <blockquote class="border-l-4 border-brand-teal pl-4 italic text-slate-300 text-base sm:text-lg">
+                            «HAMPI OS: Tecnología que conecta la salud con la vida, incluso donde la distancia es un desafío».
+                        </blockquote>
+
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                            HAMPI OS nace de la visión y la experiencia acumulada durante más de tres décadas por <strong>Juan Carlos Barraza Varela</strong> en el ámbito de la prevención de riesgos y la seguridad operacional en la gran minería en Chile.
+                        </p>
+
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                            A lo largo de 36 años en terreno, la observación directa de las dificultades para obtener evaluaciones sanitarias oportunas en campamentos y faenas aisladas impulsó el desarrollo de una solución tecnológica concreta. El objetivo central es dotar a las organizaciones de herramientas que contribuyan a proteger la vida de los trabajadores, reduciendo tiempos de incertidumbre mediante información clara y conectada.
+                        </p>
+
+                        <div class="grid grid-cols-2 gap-4 pt-4 border-t border-slate-800">
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="shield" class="w-6 h-6 text-brand-teal"></i>
+                                <span class="text-xs text-slate-300 font-medium">Compromiso preventivo incondicional</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="award" class="w-6 h-6 text-brand-teal"></i>
+                                <span class="text-xs text-slate-300 font-medium">Conocimiento profundo de la industria</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN 8: DESARROLLO Y VALIDACIÓN (TRANSPARENCIA TECNOLÓGICA) -->
+        <section id="desarrollo" class="py-16 sm:py-20 bg-brand-light border-b border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="max-w-4xl mx-auto bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-sm">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
+                            <i data-lucide="scale" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-brand-teal uppercase tracking-widest">Compromiso de Transparencia</span>
+                            <h2 class="text-2xl font-bold text-brand-navy">Etapa de Desarrollo y Alianzas de Validaciones</h2>
+                        </div>
+                    </div>
+
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
+                        HAMPI OS es una iniciativa tecnológica que se encuentra actualmente en etapa de desarrollo, optimización de prototipo y búsqueda activa de alianzas para su validación clínica y operacional en entornos reales. Promovemos acuerdos colaborativos con empresas mineras, instituciones de salud y centros académicos para evaluar rigurosamente la seguridad, precisión, usabilidad y desempeño del sistema.
+                    </p>
+
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 text-slate-700 text-xs sm:text-sm leading-relaxed">
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="info" class="w-5 h-5 text-brand-teal shrink-0 mt-0.5"></i>
+                            <div>
+                                <strong class="text-brand-navy block mb-1">Declaración Marco de Uso Sanitariamente Responsable:</strong>
+                                HAMPI OS está concebido como una herramienta de apoyo a la evaluación inicial y la coordinación sanitaria. No reemplaza el diagnóstico, la atención médica ni el criterio clínico presencial de profesionales de salud debidamente acreditados.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN 9: FORMULARIO DE DEMOSTRACIÓN COMERCIAL -->
+        <section id="demostracion" class="py-16 sm:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    
+                    <!-- INFORMACIÓN COMERCIAL -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <span class="text-brand-teal font-bold text-xs uppercase tracking-widest">Contacto B2B y Alianzas</span>
+                        <h2 class="text-3xl font-extrabold text-brand-navy">
+                            Conoce cómo HAMPI OS podría fortalecer la gestión sanitaria de tu organización
+                        </h2>
+                        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                            Agende una presentación personalizada con nuestro equipo para revisar las especificaciones del prototipo, evaluar factibilidad en faena o explorar alianzas de pilotaje.
+                        </p>
+
+                        <div class="space-y-4 pt-4">
+                            <div class="flex items-start gap-4 p-4 rounded-2xl bg-brand-light border border-slate-200">
+                                <i data-lucide="check-circle" class="w-6 h-6 text-brand-teal shrink-0 mt-1"></i>
+                                <div>
+                                    <h3 class="font-bold text-brand-navy text-sm">Presentación Técnica</h3>
+                                    <p class="text-xs text-slate-600">Demostración guiada de las capacidades del prototipo y módulos de hardware/software.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4 p-4 rounded-2xl bg-brand-light border border-slate-200">
+                                <i data-lucide="shield-check" class="w-6 h-6 text-brand-teal shrink-0 mt-1"></i>
+                                <div>
+                                    <h3 class="font-bold text-brand-navy text-sm">Evaluación a Medida</h3>
+                                    <p class="text-xs text-slate-600">Análisis de los requerimientos de su faena, campamento o centro industrial.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FORMULARIO CON VALIDACIÓN REAL -->
+                    <div class="lg:col-span-7">
+                        <div class="bg-brand-light p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-lg">
+                            
+                            <form id="demo-form" class="space-y-6" novalidate>
+                                
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    <!-- Nombre y Apellido -->
+                                    <div>
+                                        <label for="nombre" class="block text-xs font-bold text-brand-navy uppercase tracking-wider mb-2">Nombre y Apellido *</label>
+                                        <input type="text" id="nombre" name="nombre" required placeholder="Ej: Roberto Mamani"
+                                               class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-brand-dark text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-transparent transition-all">
+                                        <span class="error-msg text-xs text-red-500 hidden mt-1">Por favor, ingrese su nombre completo.</span>
+                                    </div>
+
+                                    <!-- Empresa o Institución -->
+                                    <div>
+                                        <label for="empresa" class="block text-xs font-bold text-brand-navy uppercase tracking-wider mb-2">Empresa o Institución *</label>
+                                        <input type="text" id="empresa" name="empresa" required placeholder="Ej: Minera El Norte S.A."
+                                               class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-brand-dark text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-transparent transition-all">
+                                        <span class="error-msg text-xs text-red-500 hidden mt-1">Por favor, ingrese el nombre de su empresa.</span>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    <!-- Cargo -->
+                                    <div>
+                                        <label for="cargo" class="block text-xs font-bold text-brand-navy uppercase tracking-wider mb-2">Cargo u Ocupación *</label>
+                                        <input type="text" id="cargo" name="cargo" required placeholder="Ej: Gerente SSO / HSEC"
+                                               class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-brand-dark text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-transparent transition-all">
+                                        <span class="error-msg text-xs text-red-500 hidden mt-1">Por favor, especifique su cargo.</span>
+                                    </div>
+
+                                    <!-- Correo Corporativo -->
+                                    <div>
+                                        <label for="email" class="block text-xs font-bold text-brand-navy uppercase tracking-wider mb-2">Correo Electrónico Corporativo *</label>
+                                        <input type="email" id="email" name="email" required placeholder="nombre@empresa.cl"
+                                               class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-brand-dark text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-transparent transition-all">
+                                        <span class="error-msg text-xs text-red-500 hidden mt-1">Ingrese un correo corporativo válido.</span>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    <!-- Teléfono -->
+                                    <div>
+                                        <label for="telefono" class="block text-xs font-bold text-brand-navy uppercase tracking-wider mb-2">Teléfono de Contacto *</label>
+                                        <input type="tel" id="telefono" name="telefono" required placeholder="+56 9 1234 5678"
+                                               class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-brand-dark text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-transparent transition-all">
+                                        <span class="error-msg text-xs text-red-500 hidden mt-1">Ingrese un número telefónico válido.</span>
+                                    </div>
+
+                                    <!-- Sector de Actividad -->
+                                    <div>
+                                        <label for="sector" class="block text-xs font-bold text-brand-navy uppercase tracking-wider mb-2">Sector de Actividad *</label>
+                                        <select id="sector" name="sector" required
+                                                class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-brand-dark text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-transparent transition-all">
+                                            <option value="">Seleccione un sector...</option>
+                                            <option value="Gran Minería">Gran Minería</option>
+                                            <option value="Empresa Contratista Minera">Empresa Contratista Minera (EECC)</option>
+                                            <option value="Industria / Manufactura">Industria / Manufactura / Energía</option>
+                                            <option value="Institución de Salud / Mutual">Institución de Salud / Mutual</option>
+                                            <option value="Operaciones en Zonas Remotas">Operaciones en Zonas Remotas</option>
+                                            <option value="Otro">Otro Sector</option>
+                                        </select>
+                                        <span class="error-msg text-xs text-red-500 hidden mt-1">Seleccione su sector de actividad.</span>
+                                    </div>
+                                </div>
+
+                                <!-- Mensaje o Necesidad Específica -->
+                                <div>
+                                    <label for="mensaje" class="block text-xs font-bold text-brand-navy uppercase tracking-wider mb-2">Mensaje o Necesidad Específica</label>
+                                    <textarea id="mensaje" name="mensaje" rows="4" placeholder="Describa brevemente la operación o requerimiento de su organización..."
+                                              class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-brand-dark text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-transparent transition-all"></textarea>
+                                </div>
+
+                                <!-- Casilla de Consentimiento -->
+                                <div class="flex items-start gap-3">
+                                    <input type="checkbox" id="consentimiento" name="consentimiento" required class="mt-1 w-4 h-4 text-brand-teal focus:ring-brand-teal rounded border-slate-300">
+                                    <label for="consentimiento" class="text-xs text-slate-600">
+                                        Acepto el tratamiento de mis datos personales para ser contactado con fines comerciales e informativos respecto a HAMPI OS. 
+                                        <a href="#aviso-privacidad" class="text-brand-teal underline">Política de Tratamiento de Datos</a>. *
+                                    </label>
+                                </div>
+                                <span id="consent-error" class="error-msg text-xs text-red-500 hidden">Debe aceptar el consentimiento para enviar.</span>
+
+                                <!-- Botón Envío -->
+                                <button type="submit" id="submit-btn" class="w-full bg-brand-teal hover:bg-brand-tealHover text-white font-bold text-base py-4 rounded-xl shadow-lg hover:shadow-brand-teal/20 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-teal flex items-center justify-center gap-2">
+                                    <span>Solicitar demostración</span>
+                                    <i data-lucide="send" class="w-5 h-5"></i>
+                                </button>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- PIE DE PÁGINA / FOOTER CORPORATIVO -->
+    <footer class="bg-brand-navy text-white border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12 mb-12">
+                
+                <!-- Columna Marca -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-brand-teal flex items-center justify-center text-white font-black text-lg">H</div>
+                        <span class="text-2xl font-black text-white">HAMPI <span class="text-brand-teal">OS</span></span>
+                    </div>
+                    <p class="text-xs text-slate-400 max-w-sm leading-relaxed">
+                        Iniciativa tecnológica chilena de salud digital para la evaluación inicial de riesgos en minería, industria y zonas remotas.
+                    </p>
+                    <div class="pt-2 flex items-center gap-2 text-xs text-slate-400">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-brand-teal shrink-0"></i>
+                        <span>Chile — Proyectado para operaciones industriales de Latinoamérica</span>
+                    </div>
+                </div>
+
+                <!-- Columna Enlaces Rápidos -->
+                <div>
+                    <h3 class="text-xs font-bold text-slate-300 uppercase tracking-widest mb-4">Navegación</h3>
+                    <ul class="space-y-2.5 text-xs text-slate-400">
+                        <li><a href="#inicio" class="hover:text-brand-teal transition-colors">Inicio</a></li>
+                        <li><a href="#solucion" class="hover:text-brand-teal transition-colors">La Solución</a></li>
+                        <li><a href="#como-funciona" class="hover:text-brand-teal transition-colors">Cómo Funciona</a></li>
+                        <li><a href="#beneficios" class="hover:text-brand-teal transition-colors">Beneficios</a></li>
+                        <li><a href="#aplicaciones" class="hover:text-brand-teal transition-colors">Aplicaciones</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna Institucional -->
+                <div>
+                    <h3 class="text-xs font-bold text-slate-300 uppercase tracking-widest mb-4">Institucional</h3>
+                    <ul class="space-y-2.5 text-xs text-slate-400">
+                        <li><a href="#nosotros" class="hover:text-brand-teal transition-colors">Sobre el Fundador</a></li>
+                        <li><a href="#desarrollo" class="hover:text-brand-teal transition-colors">Transparencia Sanitaria</a></li>
+                        <li><a href="#demostracion" class="hover:text-brand-teal transition-colors">Solicitar Demostración</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna Contacto Corporativo -->
+                <div>
+                    <h3 class="text-xs font-bold text-slate-300 uppercase tracking-widest mb-4">Contacto Directo</h3>
+                    <div class="space-y-3 text-xs">
+                        <!-- Enlace dinámico de WhatsApp si está configurado -->
+                        <div id="whatsapp-container">
+                            <!-- Se renderiza por JS según CONFIG_HAMPI -->
+                        </div>
+                        <p class="text-slate-400">Para reuniones institucionales utilice el formulario de agenda.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer Inferior -->
+            <div class="pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+                <p>&copy; <span id="current-year"></span> HAMPI OS. Todos los derechos reservados. Iniciativa de Innovación en Salud Digital.</p>
+                <div class="flex gap-6">
+                    <a href="#aviso-privacidad" id="aviso-privacidad" class="hover:text-brand-teal transition-colors">Aviso Legal y Privacidad</a>
+                    <a href="#desarrollo" class="hover:text-brand-teal transition-colors">Marco de Salud</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL DE CONFIRMACIÓN / MENSAJE DE ESTADO DEL FORMULARIO -->
+    <div id="form-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden" aria-modal="true" role="dialog">
+        <div class="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl text-center space-y-4 border border-slate-100">
+            <div id="modal-icon-container" class="w-16 h-16 rounded-full bg-teal-100 text-brand-teal flex items-center justify-center mx-auto">
+                <i data-lucide="check-circle-2" class="w-10 h-10"></i>
+            </div>
+            <h3 id="modal-title" class="text-xl font-bold text-brand-navy">¡Solicitud Registrada!</h3>
+            <p id="modal-message" class="text-sm text-slate-600 leading-relaxed">
+                Gracias por su interés en HAMPI OS. Un representante se pondrá en contacto con su organización a la brevedad.
+            </p>
+            <button type="button" id="close-modal-btn" class="w-full bg-brand-navy hover:bg-slate-800 text-white font-bold py-3 rounded-xl transition-colors">
+                Entendido
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT PRINCIPAL -->
+    <script>
+        // Inicializar Iconos Lucide
+        lucide.createIcons();
+
+        // Año actual footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // NAVEGACIÓN MÓVIL (MENÚ HAMBURGUESA)
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function toggleMobileMenu() {
+            const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+            mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('hidden');
+            menuIconOpen.classList.toggle('hidden');
+            menuIconClose.classList.toggle('hidden');
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    toggleMobileMenu();
+                }
+            });
+        });
+
+        // CONFIGURACIÓN Y RENDER DE WHATSAPP BUSINESS CORPORATIVO
+        const waContainer = document.getElementById('whatsapp-container');
+        if (CONFIG_HAMPI.whatsappNumber && CONFIG_HAMPI.whatsappNumber.trim() !== '') {
+            const waUrl = `https://wa.me/${CONFIG_HAMPI.whatsappNumber}?text=${CONFIG_HAMPI.whatsappMessage}`;
+            waContainer.innerHTML = `
+                <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-medium transition-colors">
+                    <i data-lucide="message-circle" class="w-4 h-4"></i>
+                    <span>Contactar por WhatsApp</span>
+                </a>
+            `;
+            lucide.createIcons();
+        } else {
+            waContainer.innerHTML = `
+                <span class="text-slate-400 italic">Contacto directo vía WhatsApp pendiente de asignación comercial.</span>
+            `;
+        }
+
+        // VALIDACIÓN Y MANEJO DEL FORMULARIO DE DEMOSTRACIÓN
+        const demoForm = document.getElementById('demo-form');
+        const formModal = document.getElementById('form-modal');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const modalTitle = document.getElementById('modal-title');
+        const modalMessage = document.getElementById('modal-message');
+        const modalIconContainer = document.getElementById('modal-icon-container');
+
+        // Función para mostrar modal de estado
+        function showModal(title, message, isSuccess = true) {
+            modalTitle.textContent = title;
+            modalMessage.textContent = message;
+            if (isSuccess) {
+                modalIconContainer.className = "w-16 h-16 rounded-full bg-teal-100 text-brand-teal flex items-center justify-center mx-auto";
+                modalIconContainer.innerHTML = `<i data-lucide="check-circle-2" class="w-10 h-10"></i>`;
+            } else {
+                modalIconContainer.className = "w-16 h-16 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center mx-auto";
+                modalIconContainer.innerHTML = `<i data-lucide="alert-triangle" class="w-10 h-10"></i>`;
+            }
+            lucide.createIcons();
+            formModal.classList.remove('hidden');
+        }
+
+        closeModalBtn.addEventListener('click', () => {
+            formModal.classList.add('hidden');
+        });
+
+        // Validación en tiempo real y envío
+        demoForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            
+            let isValid = true;
+            const requiredInputs = demoForm.querySelectorAll('[required]');
+
+            requiredInputs.forEach(input => {
+                const errorSpan = input.parentElement.querySelector('.error-msg') || document.getElementById('consent-error');
+                
+                if (input.type === 'checkbox') {
+                    if (!input.checked) {
+                        isValid = false;
+                        if (errorSpan) errorSpan.classList.remove('hidden');
+                    } else {
+                        if (errorSpan) errorSpan.classList.add('hidden');
+                    }
+                } else if (input.type === 'email') {
+                    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailPattern.test(input.value.trim())) {
+                        isValid = false;
+                        if (errorSpan) errorSpan.classList.remove('hidden');
+                        input.classList.add('border-red-500');
+                    } else {
+                        if (errorSpan) errorSpan.classList.add('hidden');
+                        input.classList.remove('border-red-500');
+                    }
+                } else {
+                    if (input.value.trim() === '') {
+                        isValid = false;
+                        if (errorSpan) errorSpan.classList.remove('hidden');
+                        input.classList.add('border-red-500');
+                    } else {
+                        if (errorSpan) errorSpan.classList.add('hidden');
+                        input.classList.remove('border-red-500');
+                    }
+                }
+            });
+
+            if (!isValid) {
+                return;
+            }
+
+            // Recopilar datos
+            const formData = {
+                nombre: document.getElementById('nombre').value,
+                empresa: document.getElementById('empresa').value,
+                cargo: document.getElementById('cargo').value,
+                email: document.getElementById('email').value,
+                telefono: document.getElementById('telefono').value,
+                sector: document.getElementById('sector').value,
+                mensaje: document.getElementById('mensaje').value
+            };
+
+            const submitBtn = document.getElementById('submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<span>Enviando...</span>`;
+
+            // Si hay un endpoint configurado en CONFIG_HAMPI.formEndpoint
+            if (CONFIG_HAMPI.formEndpoint) {
+                fetch(CONFIG_HAMPI.formEndpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                })
+                .then(response => {
+                    if (response.ok) {
+                        showModal('¡Demostración Solicitada!', 'Hemos recibido su información correctamente. Nuestro equipo se comunicará para agendar la presentación.');
+                        demoForm.reset();
+                    } else {
+                        showModal('Aviso de Envío', 'Hubo un inconveniente al procesar la solicitud automática. Por favor vuelva a intentarlo o utilice el contacto de WhatsApp.', false);
+                    }
+                })
+                .catch(() => {
+                    showModal('Aviso de Envío', 'No fue posible conectar con el servidor. Verifique su conexión o intente más tarde.', false);
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = `<span>Solicitar demostración</span><i data-lucide="send" class="w-5 h-5"></i>`;
+                    lucide.createIcons();
+                });
+            } else {
+                // Simulación limpia sin inventar envíos simulados falsos
+                setTimeout(() => {
+                    showModal('Formulario Validado', 'Los datos ingresados son válidos. (Nota: Para recibir los correos de forma directa en su servidor, configure el campo CONFIG_HAMPI.formEndpoint en el código del sitio web).', true);
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = `<span>Solicitar demostración</span><i data-lucide="send" class="w-5 h-5"></i>`;
+                    lucide.createIcons();
+                    demoForm.reset();
+                }, 600);
+            }
+        });
+    </script>
+</body>
+</html>
